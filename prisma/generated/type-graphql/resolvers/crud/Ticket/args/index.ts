@@ -1,0 +1,10 @@
+export { AggregateTicketArgs } from "./AggregateTicketArgs";
+export { CreateTicketArgs } from "./CreateTicketArgs";
+export { DeleteManyTicketArgs } from "./DeleteManyTicketArgs";
+export { DeleteTicketArgs } from "./DeleteTicketArgs";
+export { FindFirstTicketArgs } from "./FindFirstTicketArgs";
+export { FindManyTicketArgs } from "./FindManyTicketArgs";
+export { FindUniqueTicketArgs } from "./FindUniqueTicketArgs";
+export { UpdateManyTicketArgs } from "./UpdateManyTicketArgs";
+export { UpdateTicketArgs } from "./UpdateTicketArgs";
+export { UpsertTicketArgs } from "./UpsertTicketArgs";

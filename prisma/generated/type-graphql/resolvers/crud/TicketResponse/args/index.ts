@@ -1,0 +1,10 @@
+export { AggregateTicketResponseArgs } from "./AggregateTicketResponseArgs";
+export { CreateTicketResponseArgs } from "./CreateTicketResponseArgs";
+export { DeleteManyTicketResponseArgs } from "./DeleteManyTicketResponseArgs";
+export { DeleteTicketResponseArgs } from "./DeleteTicketResponseArgs";
+export { FindFirstTicketResponseArgs } from "./FindFirstTicketResponseArgs";
+export { FindManyTicketResponseArgs } from "./FindManyTicketResponseArgs";
+export { FindUniqueTicketResponseArgs } from "./FindUniqueTicketResponseArgs";
+export { UpdateManyTicketResponseArgs } from "./UpdateManyTicketResponseArgs";
+export { UpdateTicketResponseArgs } from "./UpdateTicketResponseArgs";
+export { UpsertTicketResponseArgs } from "./UpsertTicketResponseArgs";

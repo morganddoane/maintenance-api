@@ -1,0 +1,10 @@
+export { AggregateTicketBlockArgs } from "./AggregateTicketBlockArgs";
+export { CreateTicketBlockArgs } from "./CreateTicketBlockArgs";
+export { DeleteManyTicketBlockArgs } from "./DeleteManyTicketBlockArgs";
+export { DeleteTicketBlockArgs } from "./DeleteTicketBlockArgs";
+export { FindFirstTicketBlockArgs } from "./FindFirstTicketBlockArgs";
+export { FindManyTicketBlockArgs } from "./FindManyTicketBlockArgs";
+export { FindUniqueTicketBlockArgs } from "./FindUniqueTicketBlockArgs";
+export { UpdateManyTicketBlockArgs } from "./UpdateManyTicketBlockArgs";
+export { UpdateTicketBlockArgs } from "./UpdateTicketBlockArgs";
+export { UpsertTicketBlockArgs } from "./UpsertTicketBlockArgs";

@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../prisma/generated/type-graphql"
+}
+
+enum UserRole {
+  Admin
+  Manager
+  User
+}
+
+model User {
+  id             Int              @id @default(autoincrement())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  role           UserRole
+  first          String
+  last           String
+  email          String           @unique
+  phone          String           @unique
+  /// @TypeGraphQL.omit(output: true)
+  password       String
+  Ticket         Ticket[]
+  TicketExpense  TicketExpense[]
+  TicketResponse TicketResponse[]
+  Attachment     Attachment[]
+  TicketBlock    TicketBlock[]
+}
+
+enum TicketState {
+  Pending
+  Open
+  Blocked
+  Compelete
+  Deleted
+}
+
+model Ticket {
+  id               Int             @id @default(autoincrement())
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  createdBy        User            @relation(fields: [userId], references: [id])
+  userId           Int
+  title            String
+  note             String
+  due              DateTime?
+  expenses         TicketExpense[]
+  response         TicketResponse? @relation(fields: [ticketResponseId], references: [id])
+  ticketResponseId Int?
+  state            TicketState
+  seenBy           String[]
+  attachments      Attachment[]
+  TicketBlock      TicketBlock?    @relation(fields: [ticketBlockId], references: [id])
+  ticketBlockId    Int?
+  tags             String[]
+}
+
+model TicketResponse {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  createdBy User     @relation(fields: [userId], references: [id])
+  userId    Int
+  Ticket    Ticket[]
+  story     String
+
+}
+
+model TicketBlock {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  createdBy User     @relation(fields: [userId], references: [id])
+  userId    Int
+  Ticket    Ticket[]
+  story     String
+}
+
+model TicketExpense {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  createdBy   User     @relation(fields: [userId], references: [id])
+  userId      Int
+  Ticket      Ticket?  @relation(fields: [ticketId], references: [id])
+  ticketId    Int?
+  dollars     Float
+  description String
+}
+
+model Attachment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  createdBy User     @relation(fields: [userId], references: [id])
+  userId    Int
+  Ticket    Ticket?  @relation(fields: [ticketId], references: [id])
+  ticketId  Int?
+  url       String
+  title     String?
+}
